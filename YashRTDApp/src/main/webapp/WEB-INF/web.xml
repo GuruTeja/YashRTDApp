@@ -4,4 +4,11 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  <!-- Dispatcher Servlet -->
+  <servlet>
+  	<servlet-name>dispatcher</servlet-name>
+  	<servlet-class></servlet-class>
+  </servlet>
+ 
 </web-app>
