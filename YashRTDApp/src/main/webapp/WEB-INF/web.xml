@@ -4,11 +4,13 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  
-  <!-- Dispatcher Servlet -->
+  <!-- Configure Dispatcher Servlet -->
   <servlet>
   	<servlet-name>dispatcher</servlet-name>
-  	<servlet-class></servlet-class>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   </servlet>
- 
+  <servlet-mapping>
+  	<servlet-name>dispatcher</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
 </web-app>
