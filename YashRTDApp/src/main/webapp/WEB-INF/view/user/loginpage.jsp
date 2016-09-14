@@ -44,7 +44,7 @@
 						<strong> RTD APP </strong>
 					</div>
 					<div class="panel-body">
-						<form role="form" action="user/authenticateUser.do" method="POST">
+						<form role="form" action="./user/authenticateUser.htm" method="POST">
 							<fieldset>
 								<div class="row">
 									<div class="center-block">
@@ -82,7 +82,7 @@
 						</form>
 					</div>
 					<div class="panel-footer ">
-						Don't have an account! <a href="./user/registration.do" onClick=""> Register Here </a>
+						Don't have an account! <a href="./user/registration.htm" onClick=""> Register Here </a>
 					</div>
 				</div>
 			</div>

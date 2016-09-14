@@ -8,7 +8,8 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	<display-name>Archetype Created Web Application</display-name>
-	<!-- Configure Dispatcher Servlet -->
+	
+	<!-- Configure Spring dispatcher servlet -->
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

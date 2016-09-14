@@ -1,17 +1,23 @@
 package com.yash.rtd.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.tomcat.jni.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yash.rtd.model.User;
 import com.yash.rtd.service.UserService;
 
 @Controller
+//@SessionAttributes({"loggedInUser"})
 @RequestMapping("/user")
 public class UserController {
 	
@@ -38,19 +44,26 @@ public class UserController {
 	}
 	
 	@RequestMapping("/authenticateUser")
-	public ModelAndView authenticateUser(@RequestParam("email") String email,@RequestParam("password") String password){
+	public ModelAndView authenticateUser(@RequestParam("email") String email,@RequestParam("password") String password,HttpServletRequest req){
 		System.out.println("in authenticateUser controller");
 		User user = new User();
 		user.setEmail(email);
 		user.setPassword(password);
 		loggedInUser=userService.authenticateUser(user);
-		System.out.println("loggedInUser is:" +loggedInUser.getFirstname());
-		System.out.println("loggedInUser email is:" +loggedInUser.getEmail());
-		if(loggedInUser.getFk_role_id()==1){
-			ModelAndView mav = new ModelAndView("user/admin/adminDashBoardpage");
-			mav.addObject("loggedInUser", loggedInUser);
+		System.out.println("loggedInUser: "+loggedInUser);
+		if(loggedInUser != null){
+			if(loggedInUser.getFk_role_id()==1){
+				ModelAndView mav = new ModelAndView("redirect:/admin/adminDashBoardpage.htm"); //user/admin/adminDashBoardpage"
+				mav.addObject("loggedInUser", loggedInUser);
+				req.getSession().setAttribute("loggedInUser",loggedInUser);
+				return mav;
+			}
+		}
+		else{
+			ModelAndView mav = new ModelAndView("redirect:/index.jsp");
 			return mav;
 		}
+		
 		return null;
 	}
 	
@@ -75,7 +88,8 @@ public class UserController {
 	}
 
 	@RequestMapping("/logout")
-	public String logoutUser(){
-		return "loginpage";
+	public String logoutUser(HttpSession session){
+		session.setAttribute("loggedInUser", null); //session to null
+		return "redirect:/index.jsp";
 	}
 }

@@ -1,5 +1,7 @@
 package com.yash.rtd.daospringjdbcimp;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,14 @@ public class UserDaoImp implements UserDao{
 
 		Object args[] = new Object[]{user.getEmail(),user.getPassword()};
 		UserRowMapper userRowMapper = new UserRowMapper();
-		User loggedUser = jdbcTemplate.queryForObject(sql, args, userRowMapper);//queryForObject return type would be return type of userRowMapper
+		User loggedUser = null;
+		try {
+			loggedUser = jdbcTemplate.queryForObject(sql, args, userRowMapper);
+			
+		} catch (Exception e) {
+			System.out.println("Excepted 1 but came zero");
+		}
+		//queryForObject return type would be return type of userRowMapper
 		return loggedUser;
 	}
 
@@ -35,5 +44,4 @@ public class UserDaoImp implements UserDao{
 		System.out.println("in UserDaoImp.registerUser");
 		return user;
 	}
-
 }

@@ -4,10 +4,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- For Header,footer, and panel -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- Table in Pagination -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+<!-- For Pagination -->   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" 
+href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></link>
+<script type="text/javascript" 
+src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#myTable').dataTable();
+});
+
+</script>
 <style type="text/css">
     .bs-example{
     	margin: 20px;
@@ -33,37 +49,16 @@
 </style>
 </head>
 <body>
-	<center>
-		<div class="container" style="margin-top: 40px" id="mainContainer">
-		<div class="row">
-			<div class="col-sm-8 col-md-10 col-md-offset-1">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<!-- Satic navbar -->
-						<%@include file="/WEB-INF/view/user/admin/header.jsp" %>
-					</div>
-					<div class="panel-body">
-						<form role="form" action="" method="POST">
-							<fieldset>
-								<div class="row">
-									<div class="col-sm-1 col-md-1  col-md-offset-1 ">
-										<div class="form-group" id="userinformation">
-											<div class="input-group">
-												<%@include file="/WEB-INF/view/user/admin/userhomepage.jsp" %>
-											</div>
-										</div>
-									</div>
-								</div>
-							</fieldset>
-						</form>
-					</div>
-					<div class="panel-footer" id="footer">
-						<%@include file="/WEB-INF/view/footer.jsp" %>
-					</div>
-				</div>
-			</div>
+	<center>	
+		<div id="navBar">
+			<%@include file="/WEB-INF/view/user/admin/header.jsp" %>
 		</div>
-	</div>
+		<div id="body">
+			<%@include file="/WEB-INF/view/user/admin/viewUserList.jsp" %>
+		</div>
+		<div>
+			<%@include file="/WEB-INF/view/footer.jsp" %>
+		</div>
 	</center>
 </body>
 </html>

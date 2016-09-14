@@ -6,7 +6,7 @@
 						<strong> Select Location </strong>
 					</div>
 					<div class="panel-body">
-						<form role="form" action="admin/listusers.do" method="POST">
+						<form role="form" action="../admin/listusers.htm" method="POST">
 							<fieldset>	
 								<div class="row">
 									<div class="col-sm-8 col-md-10  col-md-offset-1 ">
