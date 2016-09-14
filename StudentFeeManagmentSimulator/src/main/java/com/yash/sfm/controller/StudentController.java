@@ -38,7 +38,7 @@ public class StudentController {
 	}
 
 	private void getRegisterdStudentCoursesAndFeeDetails() {
-		//studentService
+		////studentService
 	}
 
 	@RequestMapping("/freesearch")
